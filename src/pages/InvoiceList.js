@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Table } from 'react-bootstrap';
+import { Alert, Button, Table } from 'react-bootstrap';
 import { BiLayerPlus, BiShowAlt, BiEdit, BiTrash } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import InvoiceModal from '../components/InvoiceModal';
@@ -31,10 +31,9 @@ const InvoiceList = () => {
     <div>
       <div className="mt-5 mb-4 d-flex align-items-center justify-content-between">
         <h2>Invoices</h2>
-        <Link to={'/create'}>
-          <Button variant="success">
-            <BiLayerPlus size="1.5em" style={{ marginTop: '-0.2em' }} />&nbsp;
-            Create Invoice
+        <Link to={'/create'} style={{ textDecoration: 'none' }}>
+          <Button variant="success" className="d-block w-100">
+            <BiLayerPlus size="1.5em" style={{ marginTop: '-0.2em' }} className="me-1" />Create Invoice
           </Button>
         </Link>
       </div>
@@ -65,18 +64,15 @@ const InvoiceList = () => {
                 <td>{invoice.total}</td>
                 <td className="text-center">
                   <Button variant="info" className="m-1" onClick={() => {handleViewInvoice(invoice)}}>
-                    <BiShowAlt size="1.2em" style={{ marginTop: '-0.2em' }} />&nbsp;
-                    View
+                    <BiShowAlt size="1.2em" style={{ marginTop: '-0.2em' }} className="me-1" />View
                   </Button>
                   <Link to={`/edit/${invoice.id}`}>
                     <Button variant="primary" className="m-1">
-                      <BiEdit size="1.2em" style={{ marginTop: '-0.2em' }} />&nbsp;
-                      Edit
+                      <BiEdit size="1.2em" style={{ marginTop: '-0.2em' }} className="me-1" />Edit
                     </Button>
                   </Link>
                   <Button variant="danger" className="m-1" onClick={() => {handleDeleteInvoice(invoice.id)}}>
-                    <BiTrash size="1.2em" style={{ marginTop: '-0.2em' }} />&nbsp;
-                    Delete
+                    <BiTrash size="1.2em" style={{ marginTop: '-0.2em' }} className="me-1" />Delete
                   </Button>
                 </td>
               </tr>
@@ -85,7 +81,9 @@ const InvoiceList = () => {
         </tbody>
       </Table>
       {invoices.length === 0 && (
-        <h6 className="text-center">No invoices found! Create one to view.</h6>
+        <Alert variant="warning" className="text-center">
+          No invoices found! <Link to={'/create'} className="alert-link">Create</Link> one to view.
+        </Alert>
       )}
     </div>
   );

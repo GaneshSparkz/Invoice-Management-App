@@ -5,10 +5,23 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import Modal from 'react-bootstrap/Modal';
-import { BiCheckCircle, BiCloudDownload } from "react-icons/bi";
+import { BiCheckCircle, BiAddToQueue, BiCloudDownload } from "react-icons/bi";
 import generateInvoice from '../utils/generateInvoice';
+import { Link } from 'react-router-dom';
 
 const InvoiceModal = (props) => {
+  const saveOrCopyToNew = props.reviewMode ? (
+    <Button variant="success" className="d-block w-100" onClick={() => props.handleSave(props.invoice)}>
+      <BiCheckCircle style={{width: '15px', height: '15px', marginTop: '-3px'}} className="me-2"/>Save Invoice
+    </Button>
+  ) : (
+    <Link to={`/create/copyFrom/${props.invoice.id}`} style={{ textDecoration: 'none' }}>
+      <Button variant="success" className="d-block w-100">
+        <BiAddToQueue style={{width: '15px', height: '15px', marginTop: '-3px'}} className="me-2"/>Copy to New
+      </Button>
+    </Link>
+  );
+
   return(
     <Modal show={props.showModal} onHide={props.closeModal} size="lg" centered>
       <Modal.Header closeButton>
@@ -66,7 +79,7 @@ const InvoiceModal = (props) => {
                       {item.name} - {item.description}
                     </td>
                     <td className="text-end" style={{width: '100px'}}>{props.invoice.currency} {item.price}</td>
-                    <td className="text-end" style={{width: '100px'}}>{props.invoice.currency} {item.price * item.quantity}</td>
+                    <td className="text-end" style={{width: '100px'}}>{props.invoice.currency} {(item.price * item.quantity).toFixed(2)}</td>
                   </tr>
                 );
               })}
@@ -114,14 +127,12 @@ const InvoiceModal = (props) => {
       <div className="pb-4 px-4">
         <Row>
           <Col md={6}>
-            <Button variant="success" className="d-block w-100" onClick={() => props.handleSave(props.invoice)}>
-              <BiCheckCircle style={{width: '15px', height: '15px', marginTop: '-3px'}} className="me-2"/>Save Invoice
-            </Button>
+            {saveOrCopyToNew}
           </Col>
           <Col md={6}>
             <Button variant="primary" className="d-block w-100 mt-3 mt-md-0" onClick={() => generateInvoice(props.invoice.invoiceNumber)}>
               <BiCloudDownload style={{width: '16px', height: '16px', marginTop: '-3px'}} className="me-2"/>
-              Download Copy
+              Download Invoice
             </Button>
           </Col>
         </Row>

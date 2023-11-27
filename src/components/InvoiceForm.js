@@ -73,7 +73,7 @@ const InvoiceForm = (props) => {
     let newItems = items.map(function(eachItem) {
       for (let key in eachItem) {
         if (key === itemField.name && (key + eachItem.id) === itemField.id) {
-          eachItem[key] = itemField.value;
+          eachItem = { ...eachItem, [key]: itemField.value };
         }
       }
       return eachItem;
@@ -148,7 +148,13 @@ const InvoiceForm = (props) => {
                 <Form.Control placeholder={"Billing address"} value={invoice.billFromAddress} type="text" name="billFromAddress" className="my-2" autoComplete="address" onChange={editField} required="required"/>
               </Col>
             </Row>
-            <InvoiceItem onItemizedItemEdit={onItemizedItemEdit} onRowAdd={handleAddEvent} onRowDel={handleRowDel} currency={invoice.currency} items={invoice.items}/>
+            <InvoiceItem
+              onItemizedItemEdit={onItemizedItemEdit}
+              onRowAdd={handleAddEvent}
+              onRowDel={handleRowDel}
+              currency={invoice.currency}
+              items={invoice.items}
+            />
             <Row className="mt-4 justify-content-end">
               <Col lg={6}>
                 <div className="d-flex flex-row align-items-start justify-content-between">
@@ -196,6 +202,7 @@ const InvoiceForm = (props) => {
               closeModal={closeModal}
               invoice={invoice}
               handleSave={props.onSave}
+              reviewMode={true}
             />
             <hr className="mt-4 mb-3" />
             <Form.Group className="mb-3">

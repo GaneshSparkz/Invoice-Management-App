@@ -1,16 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import InvoiceForm from '../components/InvoiceForm';
-import { EMPTY_INVOICE } from '../constants/invoiceConstants';
 import { createInvoice } from '../redux/actions/invoiceActions';
 
-export const CreateInvoice = () => {
-  const numberOfInvoices = useSelector((state) => state.invoices.length);
-  const invoice = {
-    ...EMPTY_INVOICE,
-    invoiceNumber: numberOfInvoices + 1,
-  };
+export const CopyToNew = () => {
+  const { id } = useParams();
+  const invoices = useSelector((state) => state.invoices);
+  const invoice = invoices.find((inv) => inv.id === id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,12 +15,12 @@ export const CreateInvoice = () => {
     dispatch(createInvoice(invoice));
     navigate('/');
   };
-  
+
   return (
     <div className="d-flex flex-column align-items-center justify-content-center w-100">
-      <InvoiceForm invoice={invoice} onSave={handleSave} />
+      <InvoiceForm invoice={{ ...invoice, invoiceNumber: invoices.length + 1 }} onSave={handleSave} />
     </div>
   );
 };
 
-export default CreateInvoice;
+export default CopyToNew;
