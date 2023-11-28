@@ -1,4 +1,4 @@
-# Invoice Generator - React App
+# Invoice Management App
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23fcfbff.svg?style=for-the-badge&logo=redux&logoColor=%23764abc) ![React-Router](https://img.shields.io/badge/react_router-%2320232a.svg?style=for-the-badge&logo=react-router&logoColor=%2361dbfb) ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 An Invoice Management web application built with React and Redux. This allows you to *create*, *view*, *edit* and *delete* invoices using the integrated Redux store via actions and reducer. We can also create invoice by copying to a new invoice from an existing invoice.
