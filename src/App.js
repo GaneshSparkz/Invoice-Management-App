@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
@@ -8,23 +8,23 @@ import InvoiceList from './pages/InvoiceList';
 import CreateInvoice from './pages/CreateInvoice';
 import EditInvoice from './pages/EditInvoice';
 import CopyToNew from './pages/CopyToNew';
+import NotFound from './pages/NotFound';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <Container>
-          <Routes>
-            <Route path="/" element={<InvoiceList />} />
-            <Route path="/create" element={<CreateInvoice />} />
-            <Route path="/edit/:id" element={<EditInvoice />} />
-            <Route path="/create/copyFrom/:id" element={<CopyToNew />} />
-          </Routes>
-        </Container>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Container>
+        <Routes>
+          <Route path="/" element={<InvoiceList />} />
+          <Route path="/create" element={<CreateInvoice />} />
+          <Route path="/edit/:id" element={<EditInvoice />} />
+          <Route path="/create/copyFrom/:id" element={<CopyToNew />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Container>
+    </div>
+  );
 }
 
 export default App;

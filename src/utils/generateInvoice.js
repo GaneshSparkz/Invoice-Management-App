@@ -1,6 +1,10 @@
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf'
+import jsPDF from 'jspdf';
 
+/**
+ * Generates and downloads the PDF of an invoice using html2canvas and jspdf libraries
+ * @param {string} invoiceId 
+ */
 export default function generateInvoice(invoiceId) {
   html2canvas(document.querySelector("#invoiceCapture")).then((canvas) => {
     const imgData = canvas.toDataURL('image/png', 1.0);

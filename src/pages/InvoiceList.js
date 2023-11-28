@@ -42,10 +42,10 @@ const InvoiceList = () => {
         closeModal={closeInvoice}
         invoice={selectedInvoice}
       />
-      <Table>
+      <Table striped hover>
         <thead>
           <tr>
-            <th>Invoice Number</th>
+            <th className="text-center">Invoice Number</th>
             <th>Bill To</th>
             <th>Bill From</th>
             <th>Due Date</th>
@@ -57,11 +57,11 @@ const InvoiceList = () => {
           {invoices.map((invoice) => {
             return (
               <tr id={invoice.id} key={invoice.id}>
-                <td>{invoice.invoiceNumber}</td>
+                <td className="text-center">{invoice.invoiceNumber}</td>
                 <td>{invoice.billTo}</td>
                 <td>{invoice.billFrom}</td>
                 <td>{invoice.dateOfIssue}</td>
-                <td>{invoice.total}</td>
+                <td>{invoice.currency} {invoice.total}</td>
                 <td className="text-center">
                   <Button variant="info" className="m-1" onClick={() => {handleViewInvoice(invoice)}}>
                     <BiShowAlt size="1.2em" style={{ marginTop: '-0.2em' }} className="me-1" />View

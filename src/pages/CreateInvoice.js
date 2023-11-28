@@ -5,7 +5,7 @@ import InvoiceForm from '../components/InvoiceForm';
 import { EMPTY_INVOICE } from '../constants/invoiceConstants';
 import { createInvoice } from '../redux/actions/invoiceActions';
 
-export const CreateInvoice = () => {
+const CreateInvoice = () => {
   const numberOfInvoices = useSelector((state) => state.invoices.length);
   const invoice = {
     ...EMPTY_INVOICE,

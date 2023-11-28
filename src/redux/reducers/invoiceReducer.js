@@ -1,9 +1,15 @@
 import * as actionTypes from '../actionTypes/invoiceActionTypes';
 
-const initialState = {
+export const initialState = {
   invoices: [],
 };
 
+/**
+ * Returns a new state based on the previous state according to the dispatched action
+ * @param {{ invoices: any[]; }} state current state
+ * @param {{ type: string; payload: any; }} action dispatched action
+ * @returns {{ invoices: any[]; }} new state
+ */
 export default function invoiceReducer(state=initialState, action) {
   switch (action.type) {
     case actionTypes.CREATE_INVOICE:

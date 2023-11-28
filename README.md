@@ -1,36 +1,71 @@
 # Invoice Generator - React App
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23fcfbff.svg?style=for-the-badge&logo=redux&logoColor=%23764abc) ![React-Router](https://img.shields.io/badge/react_router-%2320232a.svg?style=for-the-badge&logo=react-router&logoColor=%2361dbfb) ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-An Invoice creator project built with React. Add itemized items, configure quantity, prices, tax rates and discounts. Download Invoice as PDFs to your device. Uses [jspdf-react](https://www.npmjs.com/package/jspdf-react) to capture the data from the modal and covert it from canvas -> pdf.
+An Invoice Management web application built with React and Redux. This allows you to *create*, *view*, *edit* and *delete* invoices using the integrated Redux store via actions and reducer. We can also create invoice by copying to a new invoice from an existing invoice.
+(View -> Copy to New)
+
+> Disclaimer! This application is not connected to a backend or DB. So, refreshing the page will clear the state of redux store which means that the created invoices will be lost.
+
+The existing InvoiceForm component from [invoice-generator](https://github.com/johnuberbacher/invoice-generator) enables us to add itemized items, configure quantity, prices, tax rates and discounts. We can also Download Invoice as PDFs to your device. Uses [jspdf-react](https://www.npmjs.com/package/jspdf-react) to capture the data from the modal and covert it from canvas -> pdf.
 
 ### Live Demo
-https://invoice-generator-react.netlify.app/
+https://invoice-management-app.netlify.app
+
+### Installation and Local setup
+
+#### Clone the repository
+
+```
+git clone https://github.com/GaneshSparkz/Invoice-Management-App.git
+
+cd Invoice-Management-App
+```
+
+#### Install the dependencies
+
+```
+npm install
+```
+
+#### Run the application on browser
+
+```
+npm start
+```
 
 ### Screenshots
-<img src="https://i.imgur.com/wRetnxk.png" style="max-width: 100px; width: 100%; height: auto;">
-<img src="https://i.imgur.com/AZChaei.png" style="max-width: 100px; width: 100%; height: auto;">
-<img src="https://i.imgur.com/Bz3K3DE.png" style="max-width: 100px; width: 100%; height: auto;">
 
-### Installation
+#### Homepage
 
-```
-git clone https://github.com/johnuberbacher/invoice-generator
+<img src="https://i.imgur.com/8iGZQhs.jpg" style="max-width: 100px; width: 100%; height: auto;">
+<img src="https://i.imgur.com/s0UHytz.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-npm install
+#### Create Invoice
+<img src="https://i.imgur.com/XNXII2Q.jpg" style="max-width: 100px; width: 100%; height: auto;">
+<img src="https://i.imgur.com/vONbpch.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-npm start / npm run build
-```
+#### Edit Invoice
+<img src="https://i.imgur.com/94oZdMa.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-### To-Do
-- [x] Finish parsing data into Preview Modal
+#### View Invoice
+<img src="https://i.imgur.com/Hrs3C7o.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-- [x] Currency Picker
+#### Copy to New
+<img src="https://i.imgur.com/9HEFpov.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-- [x] Calculate Tax and Discounts
+#### Download Invoice PDF
+<img src="https://i.imgur.com/9Cn10Fd.png" style="max-width: 100px; width: 100%; height: auto;">
 
-- [ ] Store invoices in Firebase DB
+#### Not Found pages
 
+##### Wrong URL
+<img src="https://i.imgur.com/lT8hhhR.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-### Meta
+#### Wrong Invoice ID on URL
+<img src="https://i.imgur.com/eOZX1lt.jpg" style="max-width: 100px; width: 100%; height: auto;">
 
-John Uberbacher – [johnuberbacher.com](https://johnuberbacher.com)
+### To-Do (Future Scope)
+
+- [ ] Persist the invoices in redux store in `localStorage` or any other type of storage using [redux-persist](https://www.npmjs.com/package/redux-persist)
+
+- [ ] Create a backend system and Database to store the invoices and integrate it to the frontend
